@@ -3,7 +3,7 @@ import { CheckCircle } from "lucide-react"
 
 export function ProgressSteps({ steps }: ProgressStepsProps) {
   return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 shadow-sm border border-white/20">
+    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 mb-8 shadow-sm border border-white/20 dark:border-gray-700/30">
       <div className="flex items-center justify-between">
         {steps.map((step, index) => (
           <div key={step.id} className="flex items-center">
@@ -13,7 +13,7 @@ export function ProgressSteps({ steps }: ProgressStepsProps) {
                   ? "bg-emerald-500 text-white"
                   : step.current
                     ? "bg-blue-600 text-white"
-                    : "bg-gray-200 text-gray-400"
+                    : "bg-gray-200 dark:bg-gray-700 text-gray-400 dark:text-gray-500"
               }`}
             >
               {step.completed ? (
@@ -24,7 +24,7 @@ export function ProgressSteps({ steps }: ProgressStepsProps) {
             </div>
             <span
               className={`ml-2 text-xs font-medium hidden sm:block ${
-                step.completed || step.current ? "text-gray-900" : "text-gray-500"
+                step.completed || step.current ? "text-gray-900 dark:text-white" : "text-gray-500 dark:text-gray-400"
               }`}
             >
               {step.name}
@@ -32,7 +32,7 @@ export function ProgressSteps({ steps }: ProgressStepsProps) {
             {index < steps.length - 1 && (
               <div
                 className={`w-6 sm:w-12 h-px mx-3 transition-all duration-300 ${
-                  step.completed ? "bg-emerald-500" : "bg-gray-200"
+                  step.completed ? "bg-emerald-500" : "bg-gray-200 dark:bg-gray-700"
                 }`}
               />
             )}

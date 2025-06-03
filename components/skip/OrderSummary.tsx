@@ -8,9 +8,9 @@ export function OrderSummary({ selectedOption, onContinue, onBack }: OrderSummar
     return (
       <div className="lg:col-span-1">
         <div className="sticky top-8">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-sm">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Order Summary</h3>
-            <p className="text-gray-500 text-sm">Please select a skip size to see your order summary.</p>
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-gray-700/30 shadow-sm">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Order Summary</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">Please select a skip size to see your order summary.</p>
           </div>
         </div>
       </div>
@@ -20,11 +20,11 @@ export function OrderSummary({ selectedOption, onContinue, onBack }: OrderSummar
   return (
     <div className="lg:col-span-1">
       <div className="sticky top-8">
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-sm">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Order Summary</h3>
+        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-gray-700/30 shadow-sm">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Order Summary</h3>
 
           <div className="space-y-4">
-            <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
+            <div className="flex items-center space-x-3 p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
               <div className="w-12 h-8 relative rounded overflow-hidden">
                 <Image 
                   src={selectedOption.image || 'https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/4-yarder-skip.jpg'}
@@ -34,31 +34,31 @@ export function OrderSummary({ selectedOption, onContinue, onBack }: OrderSummar
                 />
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-gray-900">{selectedOption.size} Yard Skip</div>
-                <div className="text-sm text-gray-600">{selectedOption.period} hire</div>
+                <div className="font-semibold text-gray-900 dark:text-white">{selectedOption.size} Yard Skip</div>
+                <div className="text-sm text-gray-600 dark:text-gray-300">{selectedOption.period} hire</div>
               </div>
             </div>
 
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-600">Skip hire</span>
-                <span className="font-medium">£{selectedOption.price}</span>
+                <span className="text-gray-600 dark:text-gray-400">Skip hire</span>
+                <span className="font-medium text-gray-900 dark:text-white">£{selectedOption.price}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Delivery & Collection</span>
-                <span className="font-medium text-emerald-600">Included</span>
+                <span className="text-gray-600 dark:text-gray-400">Delivery & Collection</span>
+                <span className="font-medium text-emerald-600 dark:text-emerald-400">Included</span>
               </div>
-              <div className="border-t pt-2">
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-2">
                 <div className="flex justify-between text-lg font-bold">
-                  <span>Total</span>
-                  <span className="text-blue-600">£{selectedOption.price}</span>
+                  <span className="text-gray-900 dark:text-white">Total</span>
+                  <span className="text-blue-600 dark:text-blue-400">£{selectedOption.price}</span>
                 </div>
               </div>
             </div>
 
             <div className="pt-4 space-y-3">
               <Button 
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white" 
+                className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white" 
                 size="lg"
                 onClick={onContinue}
               >
@@ -68,7 +68,7 @@ export function OrderSummary({ selectedOption, onContinue, onBack }: OrderSummar
 
               <Button 
                 variant="outline" 
-                className="w-full" 
+                className="w-full border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800" 
                 size="sm"
                 onClick={onBack}
               >
@@ -77,8 +77,8 @@ export function OrderSummary({ selectedOption, onContinue, onBack }: OrderSummar
               </Button>
             </div>
 
-            <div className="pt-4 border-t">
-              <div className="flex items-center space-x-2 text-xs text-gray-500">
+            <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+              <div className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
                 <Zap className="w-3 h-3" />
                 <span>Next day delivery available</span>
               </div>

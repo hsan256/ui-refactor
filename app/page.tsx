@@ -14,6 +14,7 @@ import { OrderSummary } from "@/components/skip/OrderSummary"
 import { ProgressSteps } from "@/components/skip/ProgressSteps"
 import { SkipLoadingSkeleton } from "@/components/skip/SkipLoadingSkeleton"
 import { SkipSelection } from "@/components/skip/SkipSelection"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { fetchSkipOptions } from "@/lib/api"
 import { SkipOption, Step } from "@/lib/types"
 
@@ -103,23 +104,26 @@ export default function SkipHireOrder() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-8">
-        <div className="max-w-4xl mx-auto px-6">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8">
+        <div className="max-w-4xl mx-auto px-6 relative">
+          <div className="absolute top-0 right-0">
+            <ThemeToggle />
+          </div>
           <ProgressSteps steps={steps} />
           <div className="grid lg:grid-cols-3 gap-8">
             <SkipLoadingSkeleton />
             <div className="lg:col-span-1">
               <div className="sticky top-8">
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-sm">
+                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20 dark:border-gray-700/30 shadow-sm">
                   <div className="animate-pulse space-y-4">
-                    <div className="h-6 bg-gray-200 rounded w-32"></div>
-                    <div className="h-16 bg-gray-100 rounded"></div>
+                    <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-32"></div>
+                    <div className="h-16 bg-gray-100 dark:bg-gray-600 rounded"></div>
                     <div className="space-y-2">
-                      <div className="h-4 bg-gray-200 rounded"></div>
-                      <div className="h-4 bg-gray-200 rounded"></div>
-                      <div className="h-6 bg-gray-200 rounded"></div>
+                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                      <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded"></div>
                     </div>
-                    <div className="h-10 bg-gray-200 rounded"></div>
+                    <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
                   </div>
                 </div>
               </div>
@@ -132,19 +136,22 @@ export default function SkipHireOrder() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-8">
-        <div className="max-w-4xl mx-auto px-6">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8">
+        <div className="max-w-4xl mx-auto px-6 relative">
+          <div className="absolute top-0 right-0">
+            <ThemeToggle />
+          </div>
           <ProgressSteps steps={steps} />
           
           <div className="text-center py-12">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-sm max-w-md mx-auto">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 border border-white/20 dark:border-gray-700/30 shadow-sm max-w-md mx-auto">
               <div className="text-red-500 mb-4">
                 <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.314 18.5c-.77.833.192 2.5 1.732 2.5z" />
                 </svg>
               </div>
-              <h2 className="text-xl font-bold text-gray-900 mb-2">Unable to Load Skip Options</h2>
-              <p className="text-gray-600 mb-6">{error}</p>
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Unable to Load Skip Options</h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">{error}</p>
               <button
                 onClick={handleRetry}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors duration-200"
@@ -159,8 +166,12 @@ export default function SkipHireOrder() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-8">
-      <div className="max-w-4xl mx-auto px-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8">
+      <div className="max-w-4xl mx-auto px-6 relative">
+        <div className="absolute top-0 right-0 z-50">
+          <ThemeToggle />
+        </div>
+        
         <ProgressSteps steps={steps} />
 
         <div className="grid lg:grid-cols-3 gap-8">
