@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { OrderSummaryProps } from "@/lib/types"
 import { ArrowLeft, ArrowRight, Zap } from "lucide-react"
+import Image from "next/image"
 
 export function OrderSummary({ selectedOption, onContinue, onBack }: OrderSummaryProps) {
   if (!selectedOption) {
@@ -25,9 +26,12 @@ export function OrderSummary({ selectedOption, onContinue, onBack }: OrderSummar
           <div className="space-y-4">
             <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
               <div className="w-12 h-8 relative rounded overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-white text-xs font-bold">
-                  🗑️
-                </div>
+                <Image 
+                  src={selectedOption.image || 'https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/4-yarder-skip.jpg'}
+                  alt="Selected skip"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="flex-1">
                 <div className="font-semibold text-gray-900">{selectedOption.size} Yard Skip</div>

@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge"
 import { SkipSelectionProps } from "@/lib/types"
 import { Clock, Star } from "lucide-react"
+import Image from "next/image"
 
 export function SkipSelection({
   skips,
@@ -61,9 +62,12 @@ export function SkipSelection({
 
                   {/* Skip Image */}
                   <div className="w-16 h-12 relative rounded-lg overflow-hidden bg-gray-100 transition-transform duration-300 ease-out group-hover:scale-105">
-                    <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-white text-xs font-bold">
-                      🗑️
-                    </div>
+                    <Image 
+                      src={skip.image || 'https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/4-yarder-skip.jpg'}
+                      alt={`${skip.size} yard skip`}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
 
                   {/* Skip Details */}
@@ -104,13 +108,12 @@ export function SkipSelection({
                     {skip.features.map((feature, index) => (
                       <span 
                         key={index} 
-                        className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full transition-all duration-300 hover:bg-blue-100 hover:text-blue-700"
-                        style={{ 
-                          animationDelay: `${index * 50}ms`,
-                          animation: (selectedSkip === skip.id || hoveredSkip === skip.id) 
-                            ? 'fadeInUp 0.3s ease-out forwards' 
-                            : 'none'
-                        }}
+                        className={`text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full transition-all duration-300 hover:bg-blue-100 hover:text-blue-700 ${
+                          (selectedSkip === skip.id || hoveredSkip === skip.id) 
+                            ? "animate-fade-in-up" 
+                            : "opacity-0"
+                        }`}
+                        style={{ animationDelay: `${index * 50}ms` }}
                       >
                         {feature}
                       </span>
@@ -122,19 +125,6 @@ export function SkipSelection({
           </div>
         ))}
       </div>
-
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </div>
   )
 } 

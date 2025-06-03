@@ -9,6 +9,7 @@ export interface SkipOption {
   popular: boolean
   description: string
   features: string[]
+  image?: string
 }
 
 export interface Step {
@@ -20,17 +21,20 @@ export interface Step {
 }
 
 export interface ApiSkipResponse {
-  id?: number | string
-  size?: string | number
-  unit?: string
-  period?: string
-  price?: number
-  popular?: boolean
-  description?: string
-  features?: string[]
-  hire_period?: string
-  cost?: number
-  capacity?: string | number
+  id?: number
+  size?: number
+  hire_period_days?: number
+  transport_cost?: number | null
+  per_tonne_cost?: number | null
+  price_before_vat?: number
+  vat?: number
+  postcode?: string
+  area?: string
+  forbidden?: boolean
+  created_at?: string
+  updated_at?: string
+  allowed_on_road?: boolean
+  allows_heavy_waste?: boolean
   [key: string]: unknown
 }
 

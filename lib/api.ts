@@ -6,30 +6,22 @@ function transformApiResponse(apiData: ApiSkipResponse[]): SkipOption[] {
   }
 
   return apiData.map((skip, index) => {
-    // Extract size - could be a number or string like "4 Yards", "4", etc.
-    let size = String(skip.size || skip.capacity || '0')
-    if (size.includes('yard') || size.includes('Yard')) {
-      size = size.replace(/[^0-9]/g, '')
-    }
-
-    // Extract period - could be "7 days", "7", "1 week", etc.
-    let period = skip.period || skip.hire_period || '7 days'
-    if (typeof period === 'number') {
-      period = `${period} days`
-    }
-
-    // Extract price
-    const price = skip.price || skip.cost || 0
+    const size = String(skip.size || '0')
+    const period = skip.hire_period_days ? `${skip.hire_period_days} days` : '7 days'
+    const priceBeforeVat = skip.price_before_vat || 0
+    const vatRate = skip.vat || 20
+    const totalPrice = Math.round(priceBeforeVat * (1 + vatRate / 100))
 
     return {
-      id: Number(skip.id) || index + 1,
+      id: skip.id || index + 1,
       size: size,
-      unit: skip.unit || "Yards",
-      period: String(period),
-      price: Number(price),
-      popular: skip.popular || false,
-      description: skip.description || `${size} yard skip for your project`,
-      features: skip.features || [`${size} yard capacity`, 'Delivery included', 'Collection included'],
+      unit: "Yards",
+      period: period,
+      price: totalPrice,
+      popular: false,
+      description: `${size} yard skip for your project`,
+      features: [`${size} yard capacity`, 'Delivery included', 'Collection included'],
+      image: 'https://yozbrydxdlcxghkphhtq.supabase.co/storage/v1/object/public/skips/skip-sizes/4-yarder-skip.jpg'
     }
   })
 }
@@ -43,8 +35,7 @@ export async function fetchSkipOptions(postcode: string = 'NR32', area: string =
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      // Add timeout
-      signal: AbortSignal.timeout(10000), // 10 second timeout
+      signal: AbortSignal.timeout(10000),
     }
   )
 
@@ -53,7 +44,7 @@ export async function fetchSkipOptions(postcode: string = 'NR32', area: string =
   }
 
   const data = await response.json()
-  console.log('API Response:', data) // For debugging
+  console.log('API Response:', data)
   
   return transformApiResponse(data)
 }

@@ -68,12 +68,10 @@ export default function SkipHireOrder() {
   const handleContinue = () => {
     if (!selectedOption) return
     console.log('Continuing with skip:', selectedOption)
-    // TODO: Navigate to permit check page
   }
 
   const handleBack = () => {
     console.log('Going back to previous step')
-    // TODO: Navigate to previous step
   }
 
   const handleRetry = () => {
