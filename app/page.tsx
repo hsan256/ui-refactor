@@ -104,11 +104,11 @@ export default function SkipHireOrder() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8">
-        <div className="max-w-4xl mx-auto px-6 relative">
-          <div className="absolute top-0 right-0">
-            <ThemeToggle />
-          </div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8 relative">
+        <div className="fixed top-6 right-6 z-50">
+          <ThemeToggle />
+        </div>
+        <div className="max-w-4xl mx-auto px-6">
           <ProgressSteps steps={steps} />
           <div className="grid lg:grid-cols-3 gap-8">
             <SkipLoadingSkeleton />
@@ -136,11 +136,11 @@ export default function SkipHireOrder() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8">
-        <div className="max-w-4xl mx-auto px-6 relative">
-          <div className="absolute top-0 right-0">
-            <ThemeToggle />
-          </div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8 relative">
+        <div className="fixed top-6 right-6 z-50">
+          <ThemeToggle />
+        </div>
+        <div className="max-w-4xl mx-auto px-6">
           <ProgressSteps steps={steps} />
           
           <div className="text-center py-12">
@@ -166,12 +166,12 @@ export default function SkipHireOrder() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8">
-      <div className="max-w-4xl mx-auto px-6 relative">
-        <div className="absolute top-0 right-0 z-50">
-          <ThemeToggle />
-        </div>
-        
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8 relative">
+      <div className="fixed top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
+      
+      <div className="max-w-4xl mx-auto px-6">
         <ProgressSteps steps={steps} />
 
         <div className="grid lg:grid-cols-3 gap-8">
